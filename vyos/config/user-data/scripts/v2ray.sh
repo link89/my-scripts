@@ -16,12 +16,12 @@ export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
 case "$1" in
   start)
     echo -n "Starting daemon: "$NAME
-    start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS
+    start-stop-daemon --start --quiet --pidfile $PIDFILE --make-pidfile --background --exec $DAEMON -- $DAEMON_OPTS
     echo "."
     ;;
   stop)
     echo -n "Stopping daemon: "$NAME
-    start-stop-daemon --stop --quiet --oknodo --retry 5 --pidfile $PIDFILE
+    start-stop-daemon --stop --quiet --oknodo --retry 5 --pidfile $PIDFILE --remove-pidfile
     echo "."
     ;;
   restart)
