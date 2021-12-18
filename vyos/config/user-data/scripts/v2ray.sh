@@ -1,15 +1,15 @@
 #!/bin/sh
 
-# start-stop script for dnsmasq (for vyos)
+# start-stop script for v2ray(for vyos)
 # ref: https://gist.github.com/alobato/1968852
 
 set -e
 
-NAME=dnsmasq
-PIDFILE=/var/run/dnsmasq.pid
-DAEMON=/config/user-data/dnsmasq/bin/dnsmasq
+NAME=v2ray
+PIDFILE=/var/run/v2ray.pid
+DAEMON=/config/user-data/v2ray/v2ray
 
-DAEMON_OPTS="--conf-file=/config/user-data/dnsmasq/dnsmasq.conf --pid-file=$PIDFILE"
+DAEMON_OPTS="-config /config/user-data/v2ray/config.json"
 
 export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
 
@@ -21,7 +21,7 @@ case "$1" in
     ;;
   stop)
     echo -n "Stopping daemon: "$NAME
-    start-stop-daemon --stop --quiet --oknodo --retry 5 --pidfile $PIDFILE --remove-pidfile
+    start-stop-daemon --stop --quiet --oknodo --retry 5 --pidfile $PIDFILE
     echo "."
     ;;
   restart)
