@@ -25,7 +25,7 @@ case "$1" in
     echo "."
     ;;
   restart)
-    echo -n "Restarting daemon: "$NAME
+    echo "Restarting daemon: "$NAME
     $0 stop
     sleep 5
     $0 start
